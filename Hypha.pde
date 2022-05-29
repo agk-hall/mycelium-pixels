@@ -6,6 +6,7 @@ class Hypha extends Segment2D {
   
   Hypha(Vector2D v1, Vector2D v2) {
     super(v1, v2);
+    children = new ArrayList<Hypha>();
   }
 
   Hypha(float x1, float y1, float x2, float y2) {
@@ -13,11 +14,17 @@ class Hypha extends Segment2D {
   }
 
   Hypha grow(float length) {
-    float angle = this.angle() + random(-1, 1);
-    float x3 = (float)(x2 + length*Math.cos(angle));
-    float y3 = (float)(y2 + length*Math.sin(angle));
+    float alpha = 0.5;
+    float r = random(-alpha, alpha);
+    float angle = this.angle();
+    System.out.println(angle*180/PI);
+    float new_angle = angle + r;
+    float x3 = (float)(p2.x + length*Math.cos(new_angle));
+    float y3 = (float)(p2.y + length*Math.sin(new_angle));
 
-    Hypha h = new Hypha(x2, y2, x3, y3);
+    Hypha h = new Hypha(p2.x, p2.y, x3, y3);
+    h.parent = this;
+    children.add(h);
     return h;
   }
 }
