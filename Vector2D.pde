@@ -32,9 +32,9 @@ class Vector2D {
   float angle() {
     if (x == 0) {  // for vertical segments
       if (y > 0) {
-        return PI/2;  // downwards
+        return HALF_PI;  // downwards
       } else if (y < 0) {
-        return -PI/2;  // upwards
+        return -HALF_PI;  // upwards
       } else {  // zero-length vector
         System.err.println("WARNING: Zero-length Segment2D object.");
         return 0.0;
@@ -42,7 +42,7 @@ class Vector2D {
     }
 
     // reference angle in [-PI/2, PI/2], quadrant I is bottom right
-    float alpha = (float)Math.atan(y / x);  
+    float alpha = (float)atan(y / x);  
 
     if (x > 0) {  // quadrants I and IV
       return alpha;
@@ -66,7 +66,7 @@ class Vector2D {
   }
 
   float norm() {
-    return (float)Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+    return (float)sqrt(pow(x, 2) + pow(y, 2));
   }
 }
 

@@ -16,13 +16,11 @@ class Hypha extends Segment2D {
   Hypha grow(float length) {
     float alpha = 0.5;
     float r = random(-alpha, alpha);
-    float angle = this.angle();
-    System.out.println(angle*180/PI);
-    float new_angle = angle + r;
-    float x3 = (float)(p2.x + length*Math.cos(new_angle));
-    float y3 = (float)(p2.y + length*Math.sin(new_angle));
+    float new_angle = this.angle() + r;
+    float x_new = (float)(p2.x + length*cos(new_angle));
+    float y_new = (float)(p2.y + length*sin(new_angle));
 
-    Hypha h = new Hypha(p2.x, p2.y, x3, y3);
+    Hypha h = new Hypha(p2.x, p2.y, x_new, y_new);
     h.parent = this;
     children.add(h);
     return h;

@@ -20,7 +20,7 @@ class Segment2D {
   
   // displays a line segment
   void display() {
-    stroke(color(0));
+    stroke(color(255));
     strokeWeight(0.5);
     line(p1.x, p1.y, p2.x, p2.y);
   }
